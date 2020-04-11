@@ -3,41 +3,59 @@ import styled from 'styled-components'
 
 const NewsItemBlock = styled.div`
     display: flex;
-    margin-top: 2rem;
 
     img{
         margin-right: 2rem;
+        padding-bottom: 2rem;
         width: 170px;
+        height: 150px;
+        object-fit: cover;
     }
 
-    h2{
+    a{
+        color: black;
+        text-decoration: none;
+        &:hover{
+            color: grey;
+        }
+        h2{
         margin: 0;
+        margin-bottom: 1rem;
+        }
     }
     p{
         margin: 0;
         white-space: normal;
     }
 
-
     & + & {
         margin-top: 4rem;
     }
+
+    @media (max-width: 768px){
+        width: 500px;
+        display: block;
+        margin: 0 auto;
+    }
 `
 
-const NewsItem = ({ sample }) => {
-    const { title, description, url, img_url } = sample
-    console.log(description.length)
+const NewsItem = ({ article }) => {
+    const { title, description, url, urlToImage, source , author} = article
 
     return (
         <NewsItemBlock>
-            {img_url &&
+            {urlToImage &&
                 <div className="thumbnail">
-                    <img src={img_url} alt="img" />
+                    <a href={url} target="blank">
+                       <img src={urlToImage} alt="img" />
+                    </a>
                 </div>
             }
             <div className="contents">
-                <h2>{title}</h2>
-                <p>{description.length > 400 ? `${description.slice(0,200)}...` : description}</p>
+                <a href={url} target="blank">
+                    <h2>{title}</h2>
+                </a>
+                <p>{description.length > 200 ? `${description.slice(0,200)}...` : description}</p>
             </div>
         </NewsItemBlock>
     );
