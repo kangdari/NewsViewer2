@@ -5,7 +5,9 @@ import NewsPage from './page/NewsPage'
 function App() {
   return (
     <Switch>
-      <Route path='/' component={NewsPage} exact/>
+      {/* ? category의 값이 선택적 */}
+      <Route path='/:category?' component={NewsPage} exact/>
+      
       {/* route 설정이 안된 경로 입력 시 */}
     </Switch>
   );

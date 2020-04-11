@@ -33,9 +33,10 @@ const NewsItemBlock = styled.div`
     }
 
     @media (max-width: 768px){
-        width: 500px;
+        width: 700px;
+        /* width: 500px;
         display: block;
-        margin: 0 auto;
+        margin: 0 auto; */
     }
 `
 

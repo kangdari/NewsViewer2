@@ -11,23 +11,25 @@ const NewsListBlock = styled.div`
     margin-bottom: 5rem;
     margin-top: 2rem;
 
-
     /* 768px 이하 적용 */
     @media (max-width: 768px){
         width: 100%;
         padding: 0 2rem;
+        overflow-x: auto;
+
     }
 `
 
-const NewsList = () => {
+const NewsList = ({ category }) => {
     const [data, setData] = useState([])
+    console.log(category)
 
     useEffect(() => {
         axios.get(`http://newsapi.org/v2/top-headlines?country=kr&apiKey=d3dd9d4eee754f6da75305ba06fd670d`)
         .then(res => setData(res.data.articles))
     }, [])
 
-    console.log(data)
+    // console.log(data)
 
     return (
         <NewsListBlock>
