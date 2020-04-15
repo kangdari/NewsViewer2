@@ -32,10 +32,11 @@ const Category = styled.div`
     /* props 속성에 따른 css 적용 */
     ${props => 
         props.active && css`
-            font-weight: bold;
-            border-bottom: 2px solid skyblue;
+            font-weight: 800;
+            padding-bottom: 0.5rem;
             color: skyblue;
-            &: hover{
+            border-bottom: 2px solid skyblue;
+            &:hover{
                 color: #3bc9db;
             }
         `
@@ -77,7 +78,7 @@ const Categories = ({ category, onSelect }) => {
                 <Category 
                     key={i} 
                     onClick={() => onSelect(cg.name)}
-                    active={category === cg.name}
+                    active={ category === cg.name}
                     >
                     {cg.kr}
                 </Category>
