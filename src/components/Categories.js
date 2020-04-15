@@ -1,6 +1,6 @@
 import React from 'react';
 import styled , { css } from 'styled-components'
-import { NavLink } from 'react-router-dom'
+// import { NavLink } from 'react-router-dom'
 
 const CategoryBlock = styled.div`
     display: flex;
@@ -10,6 +10,7 @@ const CategoryBlock = styled.div`
 
     @media(max-width: 768px){
         width: 100%;
+        /* 내용이 잘리면 스크롤바 보이게 설정 */
         overflow-x: auto;
     }
 `
@@ -41,7 +42,6 @@ const Category = styled.div`
     }
 `
 
-// const category = ['business', 'entertainment', 'health', 'science', 'sports', 'technology']
 const categories = [
     {
         name: 'all',

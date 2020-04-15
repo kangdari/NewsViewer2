@@ -31,17 +31,14 @@ const NewsItemBlock = styled.div`
     & + & {
         margin-top: 4rem;
     }
-
-    @media (max-width: 768px){
+    /* 768px 이하일 때 적용 */
+    @media screen and (max-width: 768px){
         width: 700px;
-        /* width: 500px;
-        display: block;
-        margin: 0 auto; */
     }
 `
 
 const NewsItem = ({ article }) => {
-    const { title, description, url, urlToImage, source , author} = article
+    const { title, description, url, urlToImage} = article
 
     return (
         <NewsItemBlock>
@@ -56,7 +53,7 @@ const NewsItem = ({ article }) => {
                 <a href={url} target="blank">
                     <h2>{title}</h2>
                 </a>
-                <p>{description.length > 200 ? `${description.slice(0,200)}...` : description}</p>
+                <p>{description && description.length > 200 ? `${description.slice(0,200)}...` : description}</p>
             </div>
         </NewsItemBlock>
     );

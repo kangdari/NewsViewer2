@@ -2,7 +2,9 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom'
 import NewsPage from './page/NewsPage'
 
+
 function App() {
+
   return (
     <Switch>
       {/* ? category의 값이 선택적 */}
