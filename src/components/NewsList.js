@@ -32,6 +32,7 @@ const NewsList = ({ category }) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+      console.log(category)
     // api 호출 함수
     const loadData = async () => {
       setLoading(true); // 로딩 시작...

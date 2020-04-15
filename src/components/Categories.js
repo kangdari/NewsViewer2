@@ -1,6 +1,6 @@
 import React from 'react';
-import styled , { css } from 'styled-components'
-// import { NavLink } from 'react-router-dom'
+import styled from 'styled-components'
+import { NavLink } from 'react-router-dom'
 
 const CategoryBlock = styled.div`
     display: flex;
@@ -15,32 +15,32 @@ const CategoryBlock = styled.div`
     }
 `
 
-const Category = styled.div`
+const Category = styled(NavLink)`
     font-size: 1.5rem;
     cursor: pointer;
     text-decoration: none;
     white-space: pre;
+    color: black;
 
     &:hover{
         color: grey;
     }
 
-    & + & {
-        margin-left: 1rem;
-    }
-
-    /* props 속성에 따른 css 적용 */
-    ${props => 
-        props.active && css`
-            font-weight: 800;
+    /* 현재 active 클래스 스타일링 */
+    &.active{
+        font-weight: 800;
             padding-bottom: 0.5rem;
             color: skyblue;
             border-bottom: 2px solid skyblue;
             &:hover{
                 color: #3bc9db;
             }
-        `
     }
+
+    & + & {
+        margin-left: 1rem;
+    }
+
 `
 
 const categories = [
@@ -71,14 +71,18 @@ const categories = [
 
 ]
 
-const Categories = ({ category, onSelect }) => {
+const Categories = () => {
     return (
         <CategoryBlock>
-            {categories.map( (cg, i) => 
+            {categories.map((cg, i) => 
                 <Category 
                     key={i} 
-                    onClick={() => onSelect(cg.name)}
-                    active={ category === cg.name}
+                    // active: 기본값
+                    activeClassName="active"
+                    exact={cg.name === 'all'}
+                    // to 값이 '/'이라면 exact 값을 ture로 설정해주어야 다음 NavLink 컴포넌트에 스타일이 적용안됨
+                    // Route의 exact와 같음.
+                    to={cg.name === 'all' ? '/' : `/${cg.name}`}
                     >
                     {cg.kr}
                 </Category>
